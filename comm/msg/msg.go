@@ -33,24 +33,26 @@ func HandleMsg(msg *openwechat.Message) {
 	sender2, _ := msg.SenderInGroup()
 	if err != nil {
 		err = errors.Wrapf(err, "%s获取发送人信息失败", global.Conf.Keys.BotName)
-		//msg.ReplyText(err.Error())
 		return
 	}
-	fmt.Printf("\n\n\n%#v", sender)
-	fmt.Printf("\n\n\n%#v", sender2)
+	//fmt.Printf("\n\n\n%#v", sender)
+	//fmt.Printf("\n\n\n%#v", sender2)
+	//sender 是群的基础信息
+
+	// sender2是发送人的信息
+	//sender2.NickName 是群内发信息人的名称
+	//contentText 是发送的消息
 
 	if msg.IsText() { // 处理文本消息
+		var reply string
 		// 去除空格
 		contentText = trimMsgContent(msg.Content, " ")
 
 		//获取返回的消息
-		reply := contextTextBypass(contentText, sender.ID())
-		//		reply = fmt.Sprintf(`收到信息
-		//%v:%v
-		//收到你的信息了~`, sender2.NickName, contentText)
+		reply = contextTextBypass(contentText, sender.ID())
+		reply = messageTest(contentText, sender2.NickName)
 
 		reply = trimMsgContent(reply, "\n")
-
 		_, err = msg.ReplyText(reply)
 		if err != nil {
 			err = errors.Wrapf(err, "reply text msg err,contentText: %s", contentText)
@@ -63,13 +65,13 @@ func HandleMsg(msg *openwechat.Message) {
 
 // 回复图片信息
 func handleTextReplyBypass(msg *openwechat.Message, txt string) {
-	if txt == "打赏" {
-		img, err := os.Open("reword.png")
+	if txt == "图标" {
+		img, err := os.Open("./reword.png")
 		defer img.Close()
 		if err != nil {
 			err = errors.Wrapf(err, "reword open file err")
 			logrus.Error(err.Error())
-			_, err = msg.ReplyText("学雷锋，视钱财如粪土，不用打赏。")
+			_, err = msg.ReplyText("https://github.com/defeng-hub")
 			return
 		}
 		_, err = msg.ReplyImage(img)
@@ -84,10 +86,19 @@ func trimMsgContent(content string, cutset string) string {
 }
 
 func contextTextBypass(txt, userID string) (retMsg string) {
-	if txt == "123455" {
-		return `123`
+	if txt == "ping" {
+		return `pong`
 	}
 
-	// todo 其他的一些
+	return ""
+}
+
+func messageTest(txt, name string) (reply string) {
+	// name 为群组人员名
+	if txt == "测试" {
+		return fmt.Sprintf(`收到信息
+%v:%v
+收到你的信息了~`, name, txt)
+	}
 	return ""
 }

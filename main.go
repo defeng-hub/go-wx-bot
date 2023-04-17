@@ -50,9 +50,9 @@ func main() {
 				err = errors.Wrapf(err, "ping msg replyText err")
 				logrus.Error(err.Error())
 			}
+		} else { // 处理消息
+			msg2.HandleMsg(msg)
 		}
-		// 处理消息
-		msg2.HandleMsg(msg)
 	}
 
 	// 浏览器地址

@@ -5,7 +5,3 @@ keys:
   bot_name: 巅峰 # 机器人名称
   master_account: "主人的备注"
 
-redis:
-  ip: 127.0.0.1
-  port: 6379
-  passwd: xxxxxx

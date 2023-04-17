@@ -23,6 +23,7 @@ type App struct {
 type Keys struct {
 	BotName       string `json:"bot_name" yaml:"bot_name"`
 	MasterAccount string `json:"master_account" yaml:"master_account"`
+	MasterGroup   string `json:"master_group" yaml:"master_group"`
 }
 
 // GetConf .
