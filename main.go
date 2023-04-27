@@ -9,7 +9,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	qrcode "github.com/skip2/go-qrcode"
-	conf2 "go-wxbot/openwechat/comm/conf"
 	"go-wxbot/openwechat/comm/global"
 	msg2 "go-wxbot/openwechat/comm/msg"
 	"go-wxbot/openwechat/comm/ticker"
@@ -32,7 +31,7 @@ func main() {
 	logrus.Debugf("config: %s", *cfgPath)
 
 	// 加载配置文件
-	global.Conf, err = conf2.GetConf(*cfgPath)
+	global.Conf, err = global.GetConf(*cfgPath)
 	if err != nil {
 		logrus.Fatalf(err.Error())
 	}

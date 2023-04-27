@@ -1,4 +1,4 @@
-package conf
+package global
 
 import (
 	"fmt"
@@ -9,13 +9,11 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// Conf .
-type Conf struct {
+type Config struct {
 	App  App  `json:"app" yaml:"app"`
 	Keys Keys `json:"keys" yaml:"keys"`
 }
 
-// App .
 type App struct {
 	Env string `json:"env" yaml:"env"`
 }
@@ -27,7 +25,7 @@ type Keys struct {
 }
 
 // GetConf .
-func GetConf(cfg string) (conf *Conf, err error) {
+func GetConf(cfg string) (conf *Config, err error) {
 	var (
 		yamlFile = make([]byte, 0)
 	)
