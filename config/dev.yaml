@@ -2,6 +2,6 @@ app:
   env: dev
 
 keys:
-  bot_name: 巅峰 # 机器人名称
+  bot_name: "巅峰" # 机器人名称
   master_account: "主人的备注"
   master_group: "主人的群号"
