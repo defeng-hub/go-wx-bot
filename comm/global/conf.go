@@ -2,7 +2,7 @@ package global
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
@@ -32,7 +32,7 @@ func GetConf(cfg string) (conf *Config, err error) {
 
 	filepath := fmt.Sprintf("%s", cfg)
 	logrus.Infof("filepath: %s", filepath)
-	yamlFile, err = ioutil.ReadFile(filepath)
+	yamlFile, err = os.ReadFile(filepath)
 	if err != nil {
 		err = errors.Wrapf(err, "ReadFile error")
 		logrus.Errorf(err.Error())
