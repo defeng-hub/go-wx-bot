@@ -14,15 +14,15 @@ func HandleMsg(msg *openwechat.Message) {
 	//if msg.IsSendBySelf() { // 自己的消息不处理
 	//	return
 	//}
-	//if msg.IsSendByFriend() { // 好友的消息不处理
-	//	return
-	//}
-	if !msg.IsSendByGroup() {
-		// 自己的消息不处理
-		// 好友的消息不处理
-		// 处理群消息
+	if msg.IsSendByFriend() { // 好友的消息不处理
 		return
 	}
+	//if !msg.IsSendByGroup() {
+	//	// 自己的消息不处理
+	//	// 好友的消息不处理
+	//	// 处理群消息
+	//	return
+	//}
 	var (
 		contentText = ""
 		err         error

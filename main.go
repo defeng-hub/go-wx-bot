@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	cfgPath = flag.String("c", "config/prod.yaml", "*.yaml config path")
+	cfgPath = flag.String("c", "config/dev.yaml", "*.yaml config path")
 	err     error
 )
 
