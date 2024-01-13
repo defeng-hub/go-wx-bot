@@ -35,6 +35,7 @@ func main() {
 	if err != nil {
 		logrus.Fatalf(err.Error())
 	}
+	fmt.Printf("读取的配置:%#v", global.Conf)
 
 	bot := openwechat.DefaultBot(openwechat.Desktop)
 	//bot := openwechat.DefaultBot(openwechat.Normal) // 桌面模式，上面登录不上的可以尝试切换这种模式
@@ -81,7 +82,6 @@ func main() {
 	if err != nil {
 		logrus.Fatalf("wx self get groups err: %s ", err.Error())
 	}
-
 	ticker.Ticker()
 
 	// 阻塞主goroutine, 直到发生异常或者用户主动退出

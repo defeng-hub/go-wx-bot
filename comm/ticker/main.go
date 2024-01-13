@@ -24,7 +24,7 @@ func MasterTicker() {
 					SendText(message)
 
 				err = global.WxGroups.
-					SearchByRemarkName(1, global.Conf.Keys.MasterGroup).
+					SearchByNickName(1, global.Conf.Keys.MasterGroup).
 					SendText(message)
 
 				if err != nil {

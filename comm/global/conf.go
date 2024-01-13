@@ -10,8 +10,9 @@ import (
 )
 
 type Config struct {
-	App  App  `json:"app" yaml:"app"`
-	Keys Keys `json:"keys" yaml:"keys"`
+	App   App   `json:"app" yaml:"app"`
+	Keys  Keys  `json:"keys" yaml:"keys"`
+	Weibo Weibo `json:"weibo" yaml:"weibo"`
 }
 
 type App struct {
@@ -22,6 +23,10 @@ type Keys struct {
 	BotName       string `json:"bot_name" yaml:"bot_name"`
 	MasterAccount string `json:"master_account" yaml:"master_account"`
 	MasterGroup   string `json:"master_group" yaml:"master_group"`
+}
+type Weibo struct {
+	Url     string `json:"url" yaml:"url"`
+	Exclude string `json:"exclude" yaml:"exclude"`
 }
 
 // GetConf .

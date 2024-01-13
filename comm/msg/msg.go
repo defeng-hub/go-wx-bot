@@ -11,18 +11,19 @@ import (
 )
 
 func HandleMsg(msg *openwechat.Message) {
-	//if msg.IsSendBySelf() { // 自己的消息不处理
-	//	return
-	//}
+	if msg.IsSendBySelf() { // 自己的消息不处理
+		//global.WxGroups.
+		//	SearchByNickName(1, global.Conf.Keys.MasterGroup).
+		//	SendText("message - 测试")
+		return
+	}
+
 	if msg.IsSendByFriend() { // 好友的消息不处理
 		return
 	}
-	//if !msg.IsSendByGroup() {
-	//	// 自己的消息不处理
-	//	// 好友的消息不处理
-	//	// 处理群消息
-	//	return
-	//}
+	if msg.IsSendByGroup() { // 群消息不处理
+		return
+	}
 	var (
 		contentText = ""
 		err         error
