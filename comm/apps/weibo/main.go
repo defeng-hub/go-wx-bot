@@ -10,6 +10,7 @@ import (
 )
 
 var exclude []string
+var recentlyText []string
 
 func inExclude(t string, list []string) bool {
 	for _, s := range list {
@@ -66,10 +67,26 @@ func WeiboRun() {
 			}
 			// 最后的一次不等于
 			if lastStr != datum.TextRaw {
+				if len(datum.TextRaw) <= 1 {
+					fmt.Println("- 短消息", count, "排除的消息: ", datum.TextRaw)
+					continue
+				}
+
 				// 记录文本
 				message := fmt.Sprintf("微博: %s", datum.TextRaw)
 				fmt.Println("- 微博", message)
-				global.WxGroups.SearchByNickName(1, global.Conf.Keys.MasterGroup).SendText(message)
+
+				if inExclude(message, recentlyText) {
+					fmt.Println("- 微博重复消息", count, "排除的消息: ", message)
+					recentlyText = append(recentlyText, message) //插入文本
+				} else {
+					global.WxGroups.SearchByNickName(1, global.Conf.Keys.MasterGroup).SendText(message)
+					recentlyText = append(recentlyText, message)
+				}
+				if len(recentlyText) > 200 {
+					recentlyText = recentlyText[1:]
+				}
+
 				if firstS == "" {
 					//lastStr = datum.TextRaw
 					firstS = datum.TextRaw
