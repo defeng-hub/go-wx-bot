@@ -36,6 +36,7 @@ func HandleMsg(msg *openwechat.Message) {
 		err = errors.Wrapf(err, "%s获取发送人信息失败", global.Conf.Keys.BotName)
 		return
 	}
+
 	//fmt.Printf("\n\n\n%#v", sender)
 	//fmt.Printf("\n\n\n%#v", sender2)
 	//sender 是群的基础信息

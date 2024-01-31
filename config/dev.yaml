@@ -5,7 +5,8 @@ keys:
   bot_name: "巅峰" # 机器人名称
   master_account: "主人的备注"
   master_group: "教务&amp;运营协作群"
+#  master_group: "消息推送群"
 
 weibo:
-  url: "https://weibo.com/ajax/statuses/buildComments?is_asc=0&is_reload=1&id=4990045533242400&is_show_bulletin=3&is_mix=0&count=20&type=feed&uid=1651565280&fetch_level=0&locale=zh-CN"
+  url: "https://www.weibo.com/ajax/statuses/buildComments?is_asc=0&is_reload=1&id=4990797314785692&is_show_bulletin=3&is_mix=0&count=20&type=feed&uid=1651565280&fetch_level=0&locale=zh-CN"
   exclude: "博远天合教育培训,博远天合行测王文清"

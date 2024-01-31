@@ -3,7 +3,6 @@ module go-wxbot/openwechat
 go 1.16
 
 require (
-	github.com/BurntSushi/toml v1.3.2
 	github.com/Lofanmi/chinese-calendar-golang v0.0.0-20211214151323-ef5cb443e55e
 	github.com/asmcos/requests v0.0.0-20210319030608-c839e8ae4946
 	github.com/eatmoreapple/openwechat v1.4.6
